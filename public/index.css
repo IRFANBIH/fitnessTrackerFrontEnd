@@ -17,6 +17,17 @@ body {
   align-items: center;
 }
 
-#navbar div {
+#navbar{
   padding: 5px;
+  background-color: rgb(17, 64, 217);
+  display: flex;
+  justify-content: space-between;
 }
+
+#navigation{
+  justify-content: end;
+  
+}
+
+  
+
