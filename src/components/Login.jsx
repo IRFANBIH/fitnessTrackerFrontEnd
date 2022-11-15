@@ -36,7 +36,7 @@ const Login = ({setUserToken}) =>{
                 </label>
                 <input type="submit" value="Submit" />
                 <label htmlFor="login">
-                    <NavLink to="register" className="login"> Not registered? Sign up! </NavLink>
+                    <NavLink to="/register" className="login"> Not registered? Sign up! </NavLink>
                 </label>
             </form>
         </div>

@@ -22,12 +22,6 @@ a{
   align-items: center;
 }
 
-#navbar{
-  padding: 5px;
-  background-color: rgb(44, 67, 142);
-  display: flex;
-  justify-content: space-between;
-}
 
 #navigation{
   justify-content: end;
@@ -35,6 +29,12 @@ a{
   
   margin: 5px;
   
+}
+#navbar{
+  padding: 5px;
+  background-color: rgb(44, 67, 142);
+  display: flex;
+  justify-content: space-between;
 }
 
 .routes{
@@ -82,6 +82,12 @@ input{
 .login{
   color: blue;
   font-size: 15px;
+}
+
+#fitnessTracker{
+  display: flex;
+  align-items: flex-start;
+
 }
   
 
