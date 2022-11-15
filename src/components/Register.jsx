@@ -38,7 +38,7 @@ return (
                 </label>
                 <input type="submit" value="Submit" />
                 <label htmlFor="login">
-                    <NavLink to="login" className="login"> Already registered? Sign in! </NavLink>
+                    <NavLink to="/login" className="login"> Already registered? Sign in! </NavLink>
                 </label>
             </form>
         </div>
