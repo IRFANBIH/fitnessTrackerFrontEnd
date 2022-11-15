@@ -1,12 +1,34 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {getAllActivities} from '../api'
 
+const Activities = ({}) => {
+    const [allActivities, setAllActivities] = useState([])
+    async function getActivities(){
+        const publicActivities = await getAllActivities()
+        setAllActivities(publicActivities)
+    }
 
-const Activities = () => {
-
-
-    return (
-        <h1>This is Activities</h1>
-    )
-}
+    getActivities()
+    
+    return(
+        <div>
+    {allActivities.map((activity) => {
+        return (
+          <div className="activity-list" key={`activity-id${activity.id}`}>
+            <ul>
+              <li><b>Activity:</b> {activity.name}</li>
+              <li><b>Description:</b> {activity.description}</li>
+              <li><b>Duration:</b> {activity.duration}</li>
+              <li><b>Count:</b> {activity.count}</li>
+            </ul>
+          </div>
+        )
+      })}</div>
+      )
+    }
 
 export default Activities;
+        
+
+
+

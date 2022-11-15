@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react"
-import { Navbar, Routines, Activities, MyRoutines, SingleRoutine} from "./"
+import { Navbar, Routines, Activities, MyRoutines} from "./"
 import { getAllPublicRoutines } from "../api"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 const Main = () => {
 
   const [allRoutines, setAllRoutines] = useState([])
+  const [allActivities, setAllActivities] = useState([])
 
 
 
@@ -25,7 +26,7 @@ useEffect(() => {
         <Navbar />
         <Routes>
           <Route  path="/routines" element={<Routines allRoutines={allRoutines}/>} />
-          <Route  path="/activities" element={<Activities/>} />
+          <Route  path="/activities" element={<Activities setAllActivities={setAllActivities}/>}/>
           <Route  path="/myRoutines" element={<MyRoutines/>}/>
         </Routes>
       </div>
