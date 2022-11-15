@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, NavLink} from 'react-router-dom'
 import {registerNewUser} from '../api'
 
 
@@ -36,6 +36,9 @@ return (
                     <input type="password" name="password" />
                 </label>
                 <input type="submit" value="Submit" />
+                <label htmlFor="login">
+                    <NavLink to="login" className="login"> Already registered? Sign in! </NavLink>
+                </label>
             </form>
         </div>
     );
@@ -45,8 +48,8 @@ return (
 
 
 
-
-
-
-
 export default Register
+
+
+
+
