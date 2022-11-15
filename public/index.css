@@ -6,6 +6,11 @@ body {
   margin: 0;
 }
 
+a{
+  text-decoration: none;
+  color: white;
+}
+
 #navbar {
   font-family: 'Poller One', Arial, sans-serif;
   flex-grow: 1;
@@ -19,14 +24,22 @@ body {
 
 #navbar{
   padding: 5px;
-  background-color: rgb(17, 64, 217);
+  background-color: rgb(44, 67, 142);
   display: flex;
   justify-content: space-between;
 }
 
 #navigation{
   justify-content: end;
+  color: white;
   
+  margin: 5px;
+  
+}
+
+.routes{
+  margin: 5px;
+  text-decoration: underline;
 }
 
   
