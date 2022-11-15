@@ -8,7 +8,7 @@ const Navbar = () => {
        
 
         <div id="navigation">
-          <NavLink to="login"> <button> Login/SignUp </button> </NavLink>
+          <NavLink to="/register"> <button> Login/SignUp </button> </NavLink>
           <NavLink to="activities" className="routes">Activities </NavLink>
           <NavLink to="routines" className="routes"> Routines  </NavLink>
           <NavLink to="MyRoutines" className="routes">My Routines </NavLink>

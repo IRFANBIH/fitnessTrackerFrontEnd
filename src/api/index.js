@@ -25,3 +25,22 @@ export async function getAllActivities() {
     console.log(error, "AN ERROR OCCURRED WHILE GETTING ALL PUBLIC ACTIVITIES")
   }
 }
+
+export async function registerNewUser(username, password ){
+  try {
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({    
+          username,
+          password
+      })
+    }
+    const response = await fetch(`${BASE_URL}/users/register`, options)
+    const result = await response.json()
+    return result
+
+  } catch (error) {
+    console.log(error, "THERE WAS AN ERROR LOGGING IN")
+  }
+}
