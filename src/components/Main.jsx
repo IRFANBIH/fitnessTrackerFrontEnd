@@ -34,7 +34,7 @@ useEffect(() => {
           <Route  path="/" element={<Register setUserToken={setUserToken}/>} />
           <Route  path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           <Route  path="/register" element={<Register setUserToken={setUserToken}/>} />
-          <Route  path="/login" element={<Login />} />
+          <Route  path="/login" element={<Login setUserToken={setUserToken}/>} />
           <Route  path="/activities" element={<Activities setAllActivities={setAllActivities}/>}/>
           <Route  path="/myRoutines" element={<MyRoutines/>}/>
         </Routes>

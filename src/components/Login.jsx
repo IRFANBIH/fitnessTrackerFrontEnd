@@ -2,7 +2,7 @@ import React, {useState,} from "react";
 import { loginUser } from "../api";
 import { useNavigate, NavLink } from "react-router-dom";
 
-const Login = () =>{
+const Login = ({setUserToken}) =>{
     const [formData, setFormData] = useState({username: "", password: ""})
     
     const navigate = useNavigate()
