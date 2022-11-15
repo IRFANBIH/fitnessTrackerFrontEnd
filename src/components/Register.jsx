@@ -24,14 +24,15 @@ async function registerUser(event) {
   }
 
 return (
-    <div className="RegistrationForm" onSubmit={registerUser}>
-            <form>
+    <div className="Registration" onSubmit={registerUser}>
+        <h1> SIGN UP!</h1>
+            <form className="RegistrationForm" >
                 <label htmlFor="username">
-                    Username:
+                    Create a Username <br/>
                     <input type="text" name="username" />
                 </label>
                 <label htmlFor="password">
-                    Password:
+                    Create a Password <br/>
                     <input type="password" name="password" />
                 </label>
                 <input type="submit" value="Submit" />

@@ -5,7 +5,7 @@ const MyRoutines = () => {
 
 
     return (
-        <h1>Here are my Routines</h1>
+        <h1>Your Routines</h1>
     )
 }
 
