@@ -1,20 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useNavigate, NavLink} from 'react-router-dom'
 import {registerNewUser} from '../api'
 
 
 
 const Register = ({setUserToken}) => {
+const [formData, setFormData] = useState({username: "", password: ""})
 
 const navigate = useNavigate()
 
 async function registerUser(event) {
     event.preventDefault()
-    const username =event.target[0].value
-    const password = event.target[1].value
+    const username =formData.username
+    const password = formData.password
     
     const user = await registerNewUser(username, password)
-    console.log('is my user working?', user)
+
  
     const token = user.token
     setUserToken(token)
@@ -29,11 +30,11 @@ return (
             <form className="RegistrationForm" >
                 <label htmlFor="username">
                     Create a Username <br/>
-                    <input type="text" name="username" />
+                    <input onChange={(e) => setFormData({...formData, username: e.target.value})} value={formData.username}type="text" name="username" />
                 </label>
                 <label htmlFor="password">
                     Create a Password <br/>
-                    <input type="password" name="password" />
+                    <input onChange={(e) => setFormData({...formData, password: e.target.value})} value={formData.password} type="password" name="password" />
                 </label>
                 <input type="submit" value="Submit" />
                 <label htmlFor="login">
