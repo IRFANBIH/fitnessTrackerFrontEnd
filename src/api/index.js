@@ -41,6 +41,27 @@ export async function registerNewUser(username, password ){
     return result
 
   } catch (error) {
-    console.log(error, "THERE WAS AN ERROR LOGGING IN")
+    console.log(error, "THERE WAS AN ERROR REGISTERING")
   }
+}
+
+export async function loginUser(username, password){
+  try{ 
+    const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({    
+        username,
+        password
+    })
+  }
+  const response = await fetch(`${BASE_URL}/users/login`, options)
+  const result = await response.json()
+  return result
+
+} catch (error) {
+  console.log(error, "THERE WAS AN ERROR LOGGING IN")
+
+  }
+
 }

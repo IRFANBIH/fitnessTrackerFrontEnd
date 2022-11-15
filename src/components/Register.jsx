@@ -11,7 +11,7 @@ const navigate = useNavigate()
 
 async function registerUser(event) {
     event.preventDefault()
-    const username =formData.username
+    const username = formData.username
     const password = formData.password
     
     const user = await registerNewUser(username, password)
