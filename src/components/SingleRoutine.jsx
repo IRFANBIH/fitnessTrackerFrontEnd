@@ -15,8 +15,8 @@ const SingleRoutine = ({routine, allRoutines}) => {
           {routine.creatorName}
         </p>
         <p>{routine.goal}</p>
+        {/* <NavLink to='editRoutines'><button>Edit Routine</button></NavLink> */}
 
-        <button>Edit Routine</button>
         <p><b>Activities</b></p>
         {routine.activities.map((activity) => {
           return (

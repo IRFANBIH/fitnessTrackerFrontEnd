@@ -13,6 +13,7 @@ const Navbar = ({userToken, setUserToken}) => {
               setUserToken(null)
               localStorage.removeItem("token")
               localStorage.removeItem("username")
+              localStorage.removeItem("userId")
               navigate('/')
             }}> Log out </button>
             <NavLink to="/" className="routes">Home </NavLink>

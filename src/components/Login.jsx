@@ -2,7 +2,7 @@ import React, {useState,} from "react";
 import { loginUser } from "../api";
 import { useNavigate, NavLink } from "react-router-dom";
 
-const Login = ({setUserToken}) =>{
+const Login = ({setUserToken, userData}) =>{
     const [formData, setFormData] = useState({username: "", password: ""})
     
     const navigate = useNavigate()
@@ -11,6 +11,7 @@ const Login = ({setUserToken}) =>{
         event.preventDefault()
         const username = formData.username
         const password = formData.password
+        const id = userData.id
         
         const user = await loginUser(username, password)
     
@@ -21,6 +22,8 @@ const Login = ({setUserToken}) =>{
         localStorage.setItem("token", token)
         localStorage.removeItem("username")
         localStorage.setItem("username", username)
+        localStorage.removeItem("userId")
+        localStorage.setItem("userId", id)
         if(token) {
             navigate("/MyRoutines")
         }

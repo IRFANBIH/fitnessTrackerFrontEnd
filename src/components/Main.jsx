@@ -18,6 +18,11 @@ const Main = () => {
     if(username) {
       setUserData({username, ...userData})
     }
+    const userId = localStorage.getItem("userId")
+    if(userId) {
+      setUserData({id, ...userData})
+    }
+    console.log(userId, 'is this working bro')
   }, [])
 
   useEffect(() => {
@@ -46,7 +51,7 @@ const Main = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/routines" element={<Routines allRoutines={allRoutines} />} />
           <Route path="/register" element={<Register setUserToken={setUserToken} />} />
-          <Route path="/login" element={<Login setUserToken={setUserToken} />} />
+          <Route path="/login" element={<Login setUserToken={setUserToken} userData={userData}/>} />
           <Route path="/activities" element={<Activities setAllActivities={setAllActivities} />} />
           <Route
             path="/myRoutines"
