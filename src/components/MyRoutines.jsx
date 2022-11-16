@@ -24,7 +24,7 @@ const MyRoutines = ({ userToken, userData}) => {
       <h1>My Routines</h1>
       {userRoutines.map((routine) => {
         return (
-          <SingleRoutine
+          <SingleRoutine userData={userData}
             key={`routine-id${routine.id}`}
             routine={routine}
           />

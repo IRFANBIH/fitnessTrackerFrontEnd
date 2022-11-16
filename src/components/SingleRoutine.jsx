@@ -1,12 +1,13 @@
 import React from "react"
 import { NavLink} from "react-router-dom"
 
-const SingleRoutine = ({routine, allRoutines}) => {
+const SingleRoutine = ({routine, userData }) => {
 
 
 
 
   return (
+
     <div>
       <div className="single-routine">
         <h3>{routine.name}</h3>
@@ -15,8 +16,13 @@ const SingleRoutine = ({routine, allRoutines}) => {
           {routine.creatorName}
         </p>
         <p>{routine.goal}</p>
-        <NavLink to='/editRoutine'><button>Edit Routine</button></NavLink>
-        <button> Delete Routine </button>
+
+        {userData.id === routine.creatorId ?  
+        <>
+        <NavLink to='/routines/:routineId'><button>Edit Routine</button></NavLink><button> Delete Routine </button></> : null} 
+        
+       
+        
 
         <p><b>Activities</b></p>
         {routine.activities.map((activity) => {
@@ -33,6 +39,7 @@ const SingleRoutine = ({routine, allRoutines}) => {
         })}
       </div>
     </div>
+
   )
 }
 

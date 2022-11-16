@@ -99,6 +99,31 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
   }
 }
 
+// FUNCTION FOR EDITING ROUTINE
+
+export async function editMyRoutine(userToken, name, goal, isPublic, routineId){
+  try {
+    let options = {}
+    if (userToken) {
+      options = {
+        method: "PATCH",
+        body: JSON.stringify({
+          name,
+          goal,
+          isPublic
+        })
+      }
+    }
+
+    const response = await fetch(`${BASE_URL}/routines/${routineId}`, options)
+    const result = await response.json()
+    return result
+    
+  } catch (error) {
+    throw error
+  }
+}
+
 // FUNCTION FOR RETRIEVING ROUTINES BY A PARTICULAR USER * ALSO RETURNS CURRENT LOGGED-IN USER'S PUBLIC AND PRIVATE ROUTINES TO THEIR MY ROUTINES PAGE
 
 export async function getUserRoutines(username, userToken) {
