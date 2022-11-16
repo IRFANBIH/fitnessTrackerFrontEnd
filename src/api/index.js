@@ -1,6 +1,5 @@
 const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api"
 
-
 // FUNCTION FOR GETTING ALL PUBLIC ROUTINES
 
 export async function getAllPublicRoutines() {
@@ -77,21 +76,21 @@ export async function loginUser(username, password) {
 export async function NewRoutine(userToken, name, goal, isPublic) {
   try {
     let options = {}
-    if(userToken) {
-     options = {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${userToken}`
-      },
-      body: JSON.stringify({
-        name,
-        goal,
-        isPublic
-      })
+    if (userToken) {
+      options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify({
+          name,
+          goal,
+          isPublic
+        })
+      }
     }
-    }
-    console.log("this is the usertoken", options)
+
     const response = await fetch(`${BASE_URL}/routines`, options)
     const result = await response.json()
     return result
@@ -103,54 +102,47 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
 // FUNCTION FOR RETRIEVING ROUTINES BY A PARTICULAR USER * ALSO RETURNS CURRENT LOGGED-IN USER'S PUBLIC AND PRIVATE ROUTINES TO THEIR MY ROUTINES PAGE
 
 export async function getUserRoutines(username, userToken) {
-
- try {
+  try {
     let options = {}
-    if(userToken) {
-     options = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${userToken}`
+    if (userToken) {
+      options = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`
+        }
       }
-    }
     } else {
       options = {
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
+        }
       }
     }
-    }
 
-    const response = await fetch(`${BASE_URL}/users/:username/routines`, options)
+    const response = await fetch(`${BASE_URL}/users/${username}/routines`, options)
+    console.log("is this the correct url", response)
     const result = await response.json()
     return result
   } catch (error) {
     console.log(error, "THERE WAS AN ERROR GETTING USER ROUTINES")
   }
-
 }
-
 
 // FUNCTION FOR GETTING LOGGED-IN USER DATA * username and id
 
-export async function getUserData (userToken) {
-  
+export async function getUserData(userToken) {
   try {
-
-     const options = {
+    const options = {
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${userToken}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`
       }
     }
 
     const response = await fetch(`${BASE_URL}/users/me`, options)
     const result = await response.json()
     return result
-  }  catch (error) {
+  } catch (error) {
     console.log(error, "THERE WAS AN ERROR GETTING ME DATA")
-  
   }
 }
-
-

@@ -19,6 +19,8 @@ const Login = ({setUserToken}) =>{
         setUserToken(token)
         localStorage.removeItem("token")
         localStorage.setItem("token", token)
+        localStorage.removeItem("username")
+        localStorage.setItem("username", username)
         if(token) {
             navigate("/MyRoutines")
         }

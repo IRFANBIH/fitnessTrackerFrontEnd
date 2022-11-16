@@ -7,26 +7,28 @@ const Main = () => {
   const [allRoutines, setAllRoutines] = useState([])
   const [allActivities, setAllActivities] = useState([])
   const [userToken, setUserToken] = useState(null)
-  const [userRoutines, setUserRoutines] = useState([])
   const [userData, setUserData] = useState({})
 
   useEffect(() => {
     const localToken = localStorage.getItem("token")
-    setUserToken(localToken)
+    if (localToken) {
+      setUserToken(localToken)
+    }
+    const username =localStorage.getItem("username")
+    if(username) {
+      setUserData({username, ...userData})
+    }
   }, [])
 
-
-
   useEffect(() => {
+    const localToken = localStorage.getItem("token")
     async function getData() {
-      const userInformation = await getUserData(userToken)
+      const userInformation = await getUserData(localToken)
       setUserData(userInformation)
       console.log(userInformation, "this is the data for me")
     }
-    getData()
-  }, [])
-
-
+    localToken && getData()
+  }, [userToken])
 
   useEffect(() => {
     async function getPublicRoutines() {
@@ -35,8 +37,6 @@ const Main = () => {
     }
     getPublicRoutines()
   }, [])
-
-
 
   return (
     <BrowserRouter>
@@ -50,14 +50,7 @@ const Main = () => {
           <Route path="/activities" element={<Activities setAllActivities={setAllActivities} />} />
           <Route
             path="/myRoutines"
-            element={
-              <MyRoutines
-                userRoutines={userRoutines}
-                setUserRoutines={setUserRoutines}
-                userToken={userToken}
-                userData={userData}
-              />
-            }
+            element={<MyRoutines userToken={userToken} userData={userData} />}
           />
           <Route path="/createRoutine" element={<CreateRoutine userToken={userToken} />} />
         </Routes>
