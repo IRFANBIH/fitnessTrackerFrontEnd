@@ -1,7 +1,7 @@
 import React from "react"
 import { NavLink} from "react-router-dom"
 
-const SingleRoutine = ({routine, userData }) => {
+const SingleRoutine = ({routine, userData, setEditRoutine }) => {
 
 
 
@@ -19,7 +19,7 @@ const SingleRoutine = ({routine, userData }) => {
 
         {userData.id === routine.creatorId ?  
         <>
-        <NavLink to='/routines/:routineId'><button>Edit Routine</button></NavLink><button> Delete Routine </button></> : null} 
+        <NavLink to={`/routines/${routine.id}`}> <button onClick={setEditRoutine(routine)}>Edit Routine</button></NavLink><button> Delete Routine </button></> : null} 
         
        
         

@@ -3,13 +3,14 @@ import { useNavigate, useParams } from "react-router-dom"
 import { editMyRoutine} from "../api"
 
 
-const EditRoutine = () =>{
-    let{routineId} = useParams()
+
+const EditRoutine = ({userToken, editRoutine}) =>{
+    let {routineId} = useParams()
 const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    name: "",
-    goal: "",
-    isPublic: undefined
+    name: editRoutine.name,
+    goal: editRoutine.goal,
+    isPublic: editRoutine.isPublic
   })
 
   async function editedRoutine(event) {
@@ -68,7 +69,7 @@ const navigate = useNavigate()
             name="private-routine"
           />
         </label>
-        <input type="submit" value="Create Routine" />
+        <input type="submit" value="Update Routine" />
       </form>
     </div>
   )

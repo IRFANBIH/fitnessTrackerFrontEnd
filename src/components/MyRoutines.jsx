@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import { getUserRoutines } from "../api"
 import {SingleRoutine} from './'
 
-const MyRoutines = ({ userToken, userData}) => {
+const MyRoutines = ({ userToken, userData, setEditRoutine}) => {
   const [userRoutines, setUserRoutines] = useState([])
   const username = userData.username
   const id = userData.id
@@ -24,7 +24,7 @@ const MyRoutines = ({ userToken, userData}) => {
       <h1>My Routines</h1>
       {userRoutines.map((routine) => {
         return (
-          <SingleRoutine userData={userData}
+          <SingleRoutine setEditRoutine={setEditRoutine} userData={userData}
             key={`routine-id${routine.id}`}
             routine={routine}
           />

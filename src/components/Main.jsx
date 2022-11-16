@@ -8,6 +8,7 @@ const Main = () => {
   const [allActivities, setAllActivities] = useState([])
   const [userToken, setUserToken] = useState(null)
   const [userData, setUserData] = useState({})
+  const [editRoutine, setEditRoutine] = useState({})
 
   useEffect(() => {
     const localToken = localStorage.getItem("token")
@@ -46,16 +47,16 @@ const Main = () => {
         <Navbar userToken={userToken} setUserToken={setUserToken} />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/routines" element={<Routines allRoutines={allRoutines} userData={userData}/>} />
+          <Route path="/routines" element={<Routines setEditRoutine={setEditRoutine} allRoutines={allRoutines} userData={userData}/>} />
           <Route path="/register" element={<Register setUserToken={setUserToken} />} />
           <Route path="/login" element={<Login setUserToken={setUserToken} userData={userData}/>} />
           <Route path="/activities" element={<Activities setAllActivities={setAllActivities} />} />
           <Route
             path="/myRoutines"
-            element={<MyRoutines userToken={userToken} userData={userData} />}
+            element={<MyRoutines setEditRoutine={setEditRoutine} userToken={userToken} userData={userData} />}
           />
           <Route path="/createRoutine" element={<CreateRoutine userToken={userToken} />} />
-          <Route path="/routines/:routineId" element={<EditRoutine />} />
+          <Route path="/routines/:routineId" element={<EditRoutine editRoutine={editRoutine} userToken={userToken} />} />
         </Routes>
       </div>
     </BrowserRouter>

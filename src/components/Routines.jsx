@@ -1,7 +1,7 @@
 import React from "react"
 import { SingleRoutine } from "./"
 
-const Routines = ({allRoutines, userData}) => {
+const Routines = ({allRoutines, userData, setEditRoutine}) => {
 
 
 
@@ -11,7 +11,7 @@ const Routines = ({allRoutines, userData}) => {
 
       <div id="post-display">
         {allRoutines.map((routine) => {
-          return <SingleRoutine userData={userData} key={`routine-id${routine.id}`} routine={routine}  />
+          return <SingleRoutine setEditRoutine={props.setEditRoutine} userData={userData} key={`routine-id${routine.id}`} routine={routine}  />
         })}
       </div>
     </div>
