@@ -99,3 +99,58 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
     console.log(error, "THERE WAS AN ERROR CREATING ROUTINE")
   }
 }
+
+// FUNCTION FOR RETRIEVING ROUTINES BY A PARTICULAR USER * ALSO RETURNS CURRENT LOGGED-IN USER'S PUBLIC AND PRIVATE ROUTINES TO THEIR MY ROUTINES PAGE
+
+export async function getUserRoutines(username, userToken) {
+
+ try {
+    let options = {}
+    if(userToken) {
+     options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`
+      }
+    }
+    } else {
+      options = {
+        headers: {
+          'Content-Type': 'application/json'
+      }
+    }
+    }
+
+    const response = await fetch(`${BASE_URL}/users/:username/routines`, options)
+    const result = await response.json()
+    return result
+  } catch (error) {
+    console.log(error, "THERE WAS AN ERROR GETTING USER ROUTINES")
+  }
+
+}
+
+
+// FUNCTION FOR GETTING LOGGED-IN USER DATA * username and id
+
+export async function getUserData (userToken) {
+  
+  try {
+
+     const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`
+      }
+    }
+
+    const response = await fetch(`${BASE_URL}/users/me`, options)
+    const result = await response.json()
+    return result
+  }  catch (error) {
+    console.log(error, "THERE WAS AN ERROR GETTING ME DATA")
+  
+  }
+}
+
+

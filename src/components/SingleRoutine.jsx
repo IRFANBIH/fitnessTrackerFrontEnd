@@ -1,5 +1,5 @@
 import React from "react"
-import { getAllPublicRoutines } from "../api"
+
 
 const SingleRoutine = ({routine, allRoutines}) => {
 
