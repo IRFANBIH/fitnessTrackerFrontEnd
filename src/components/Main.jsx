@@ -15,14 +15,11 @@ const Main = () => {
       setUserToken(localToken)
     }
     const username =localStorage.getItem("username")
+    const id = localStorage.getItem("userId")
     if(username) {
-      setUserData({username, ...userData})
+      setUserData({id, username})
     }
-    const userId = localStorage.getItem("userId")
-    if(userId) {
-      setUserData({id, ...userData})
-    }
-    console.log(userId, 'is this working bro')
+
   }, [])
 
   useEffect(() => {
@@ -30,7 +27,7 @@ const Main = () => {
     async function getData() {
       const userInformation = await getUserData(localToken)
       setUserData(userInformation)
-      console.log(userInformation, "this is the data for me")
+ 
     }
     localToken && getData()
   }, [userToken])

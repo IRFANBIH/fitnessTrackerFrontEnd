@@ -120,7 +120,6 @@ export async function getUserRoutines(username, userToken) {
     }
 
     const response = await fetch(`${BASE_URL}/users/${username}/routines`, options)
-    console.log("is this the correct url", response)
     const result = await response.json()
     return result
   } catch (error) {

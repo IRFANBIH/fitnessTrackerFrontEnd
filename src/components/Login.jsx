@@ -11,12 +11,13 @@ const Login = ({setUserToken, userData}) =>{
         event.preventDefault()
         const username = formData.username
         const password = formData.password
-        const id = userData.id
+   
         
         const user = await loginUser(username, password)
     
      
         const token = user.token
+        const id = userData.id
         setUserToken(token)
         localStorage.removeItem("token")
         localStorage.setItem("token", token)
