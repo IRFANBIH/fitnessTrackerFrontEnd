@@ -1,64 +1,71 @@
-import React, {useState} from "react";
+import React, { useState } from "react"
+import { NewRoutine } from "../api"
 
-const CreateRoutine = ()=>{
-    const [formData, setFormData] = useState({
-        name: "",
-        goal: "",
-        isPublic: undefined
-    })
+const CreateRoutine = ({ userToken }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    goal: "",
+    isPublic: undefined
+  })
+
+  async function makeRoutine(event) {
+    event.preventDefault()
     const name = formData.name
     const goal = formData.goal
     const isPublic = formData.isPublic
 
 
+    const createdRoutine = await NewRoutine(userToken, name, goal, isPublic)
 
-    return (
-        <div id="create-routine">
-            <h1> CREATE A ROUTINE</h1>
-            <form>
-            <label htmlFor="name">
-                    Routine Name
-                    <input onChange={(e) => setFormData({...formData, name: e.target.value})} value={formData.goal}type="text" name="name" />
-                </label>
-            <label htmlFor="goal">
-                    Routine Goal
-                    <input onChange={(e) => setFormData({...formData, goal: e.target.value})} value={formData.goal} type="text" name="goal" />
-                </label>
-            <label htmlFor="private-routine">
-                Private Routine
-                    <input onChange={() => setFormData({...formData, isPublic: false})} value={formData.isPublic} type="radio" name="private-routine" />
-                </label>
-            <label htmlFor="public-routine">
-                Public Routine
-                    <input onChange={() => setFormData({...formData, isPublic: true})} value={formData.isPublic} type="radio"  name="private-routine" />
-                </label>
+    if(!userToken) {
+        alert(createdRoutine.message)
+    }
+  }
 
-
-
-
-
-
-
-            </form>
-
-
-
-
-
-
-
-
-        </div>
-
-
-
-
-    )
-
+  return (
+    <div id="create-routine" onSubmit={makeRoutine}>
+      <h1> CREATE A ROUTINE</h1>
+      <form>
+        <label htmlFor="name">
+          Routine Name
+          <input
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={formData.name}
+            type="text"
+            name="name"
+          />
+        </label>
+        <label htmlFor="goal">
+          Routine Goal
+          <input
+            onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
+            value={formData.goal}
+            type="text"
+            name="goal"
+          />
+        </label>
+        <label htmlFor="private-routine">
+          Private Routine
+          <input
+            onChange={() => setFormData({ ...formData, isPublic: false })}
+            value={formData.isPublic}
+            type="radio"
+            name="private-routine"
+          />
+        </label>
+        <label htmlFor="public-routine">
+          Public Routine
+          <input
+            onChange={() => setFormData({ ...formData, isPublic: true })}
+            value={formData.isPublic}
+            type="radio"
+            name="private-routine"
+          />
+        </label>
+        <input type="submit" value="Create Routine" />
+      </form>
+    </div>
+  )
 }
 
-
-
-
-
-export default CreateRoutine;
+export default CreateRoutine

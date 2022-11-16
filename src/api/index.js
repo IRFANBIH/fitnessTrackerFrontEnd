@@ -74,21 +74,28 @@ export async function loginUser(username, password) {
 
 // FUNCTION FOR CREATING A NEW ROUTINE
 
-export async function NewRoutine() {
+export async function NewRoutine(userToken, name, goal, isPublic) {
   try {
-    const options = {
+    let options = {}
+    if(userToken) {
+     options = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`
+      },
       body: JSON.stringify({
         name,
         goal,
         isPublic
       })
     }
+    }
+    console.log("this is the usertoken", options)
     const response = await fetch(`${BASE_URL}/routines`, options)
     const result = await response.json()
     return result
   } catch (error) {
-    console.log(error, "THERE WAS AN ERROR LOGGING IN")
+    console.log(error, "THERE WAS AN ERROR CREATING ROUTINE")
   }
 }
