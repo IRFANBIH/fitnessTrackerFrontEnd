@@ -1,7 +1,9 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { NewRoutine } from "../api"
 
 const CreateRoutine = ({ userToken }) => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: "",
     goal: "",
@@ -13,6 +15,7 @@ const CreateRoutine = ({ userToken }) => {
     const name = formData.name
     const goal = formData.goal
     const isPublic = formData.isPublic
+    navigate('/MyRoutines')
 
 
     const createdRoutine = await NewRoutine(userToken, name, goal, isPublic)

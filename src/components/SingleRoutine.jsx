@@ -15,6 +15,8 @@ const SingleRoutine = ({routine, allRoutines}) => {
           {routine.creatorName}
         </p>
         <p>{routine.goal}</p>
+
+        <button>Edit Routine</button>
         <p><b>Activities</b></p>
         {routine.activities.map((activity) => {
           return (
