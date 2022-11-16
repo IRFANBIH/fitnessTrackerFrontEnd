@@ -1,5 +1,5 @@
 import React from "react"
-
+import { NavLink} from "react-router-dom"
 
 const SingleRoutine = ({routine, allRoutines}) => {
 
@@ -15,7 +15,8 @@ const SingleRoutine = ({routine, allRoutines}) => {
           {routine.creatorName}
         </p>
         <p>{routine.goal}</p>
-        {/* <NavLink to='editRoutines'><button>Edit Routine</button></NavLink> */}
+        <NavLink to='/editRoutine'><button>Edit Routine</button></NavLink>
+        <button> Delete Routine </button>
 
         <p><b>Activities</b></p>
         {routine.activities.map((activity) => {

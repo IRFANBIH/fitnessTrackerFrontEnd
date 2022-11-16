@@ -1,7 +1,8 @@
 import React from "react";
 
 const EditRoutine = () =>{
-    <h1> Editing your routine </h1>
+
+    return <h1> Editing your routine </h1>
 
 
 
