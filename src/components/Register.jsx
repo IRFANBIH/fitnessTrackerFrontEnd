@@ -13,18 +13,25 @@ async function registerUser(event) {
     event.preventDefault()
     const username = formData.username
     const password = formData.password
+
     
     const user = await registerNewUser(username, password)
-
- 
+    
+    
     const token = user.token
     setUserToken(token)
     localStorage.removeItem("token")
     localStorage.setItem("token", token)
-    navigate("/MyRoutines")
-  }
+    if (!token) {
+        alert(user.message)
+    }
+    if(token) {navigate("/MyRoutines")}
+}
+
 
 return (
+    <div>
+     
     <div className="Registration" onSubmit={registerUser}>
         <h1> SIGN UP!</h1>
             <form className="RegistrationForm" >
@@ -34,13 +41,14 @@ return (
                 </label>
                 <label htmlFor="password">
                     Create a Password <br/>
-                    <input onChange={(e) => setFormData({...formData, password: e.target.value})} value={formData.password} type="password" name="password" />
+                    <input minLength="8" required onChange={(e) => setFormData({...formData, password: e.target.value})} value={formData.password} type="password" name="password" />
                 </label>
                 <input type="submit" value="Submit" />
                 <label htmlFor="login">
                     <NavLink to="/login" className="login"> Already registered? Sign in! </NavLink>
                 </label>
             </form>
+        </div>
         </div>
     );
 

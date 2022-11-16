@@ -19,7 +19,10 @@ const Login = ({setUserToken}) =>{
         setUserToken(token)
         localStorage.removeItem("token")
         localStorage.setItem("token", token)
-        navigate("/MyRoutines")}
+        if(token) {
+            navigate("/MyRoutines")
+        }
+    }
 
 
     return(

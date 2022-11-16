@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import { Navbar, Routines, Activities, MyRoutines, Register, Login, CreateRoutine} from "./"
+import { Navbar, Routines, Activities, MyRoutines, Register, Login, CreateRoutine, Home} from "./"
 import { getAllPublicRoutines } from "../api"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
@@ -31,7 +31,7 @@ useEffect(() => {
       <div id="Home">
         <Navbar userToken={userToken} setUserToken={setUserToken} />
         <Routes>
-          <Route  exact path="/" />
+          <Route  exact path="/" element={<Home />}/>
           <Route  path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           <Route  path="/register" element={<Register setUserToken={setUserToken}/>} />
           <Route  path="/login" element={<Login setUserToken={setUserToken}/>} />

@@ -6,7 +6,7 @@ const Navbar = ({userToken, setUserToken}) => {
   const navigate = useNavigate()
   return (
     <div id="navbar">
-        <h2 id='fitnessTracker'>  <a href="http://localhost:3000/"> Fitness Tracker </a> </h2>
+        <h2 id='fitnessTracker'> Fitness Tracker</h2>
         {userToken ? (
           <div>
             <button onClick={()=>{
@@ -14,6 +14,7 @@ const Navbar = ({userToken, setUserToken}) => {
               localStorage.removeItem("token")
               navigate('/')
             }}> Log out </button>
+            <NavLink to="/" className="routes">Home </NavLink>
             <NavLink to="MyRoutines" className="routes">My Routines </NavLink>
             <NavLink to="CreateRoutine" className="routes"> Create a Routine </NavLink>
             <NavLink to="activities" className="routes">Activities </NavLink>
@@ -21,8 +22,8 @@ const Navbar = ({userToken, setUserToken}) => {
           </div>):
           (
         <div id="navigation">
-          
           <NavLink to="login"> <button> Login/SignUp </button> </NavLink>
+          <NavLink to="/" className="routes">Home </NavLink>
           <NavLink to="activities" className="routes">Activities </NavLink>
           <NavLink to="routines" className="routes"> Routines  </NavLink>
 
