@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import { getUserRoutines } from "../api"
 import {SingleRoutine} from './'
 
-const MyRoutines = ({ userToken, userData, setEditRoutine}) => {
+const MyRoutines = ({userData, setEditRoutine}) => {
   const [userRoutines, setUserRoutines] = useState([])
   const username = userData.username
   const id = userData.id
@@ -18,7 +18,6 @@ const MyRoutines = ({ userToken, userData, setEditRoutine}) => {
     }
      allMyRoutines()
   }, [username] );
-  console.log(userRoutines, "should be userRoutines")
 
   return (
     <div>

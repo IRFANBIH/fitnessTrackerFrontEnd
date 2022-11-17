@@ -1,8 +1,10 @@
 import React from "react"
 import { NavLink} from "react-router-dom"
+import { deleteRoutine } from "../api"
 
-const SingleRoutine = ({routine, userData, setEditRoutine }) => {
-
+const SingleRoutine = ({routine, userData, setEditRoutine}) => {
+const routineId = routine.id
+const localToken= localStorage.getItem("token")
 
 
 
@@ -22,7 +24,8 @@ const SingleRoutine = ({routine, userData, setEditRoutine }) => {
         <NavLink to={`/routines/${routine.id}`}> 
         <button onClick={() => {setEditRoutine(routine)}}>Edit Routine</button>
         </NavLink>
-        <button> Delete Routine </button></> : null} 
+        <button onClick={() => {deleteRoutine(localToken, routineId)}}> Delete Routine </button> 
+        </> : null}
         
        
         

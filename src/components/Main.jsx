@@ -47,7 +47,7 @@ const Main = () => {
         <Navbar userToken={userToken} setUserToken={setUserToken} />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/routines" element={<Routines setEditRoutine={setEditRoutine} allRoutines={allRoutines} userData={userData}/>} />
+          <Route path="/routines" element={<Routines setEditRoutine={setEditRoutine} allRoutines={allRoutines} userData={userData} userToken={userToken}/>} />
           <Route path="/register" element={<Register setUserToken={setUserToken} />} />
           <Route path="/login" element={<Login setUserToken={setUserToken} userData={userData}/>} />
           <Route path="/activities" element={<Activities setAllActivities={setAllActivities} />} />
