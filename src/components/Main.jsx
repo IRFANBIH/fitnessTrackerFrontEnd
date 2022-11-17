@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Navbar, Routines, Activities, MyRoutines, Register, Login, CreateRoutine, Home, EditRoutine } from "./"
-import { getAllPublicRoutines, getUserData } from "../api"
+import { getAllPublicRoutines, getUserData, getAllActivities } from "../api"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 const Main = () => {
@@ -41,6 +41,16 @@ const Main = () => {
     getPublicRoutines()
   }, [])
 
+
+
+  useEffect(() => {
+  async function getActivities() {
+    const publicActivities = await getAllActivities()
+    setAllActivities(publicActivities)  
+  }
+  getActivities()
+},[])
+
   return (
     <BrowserRouter>
       <div id="Home">
@@ -50,7 +60,7 @@ const Main = () => {
           <Route path="/routines" element={<Routines setEditRoutine={setEditRoutine} allRoutines={allRoutines} userData={userData} userToken={userToken}/>} />
           <Route path="/register" element={<Register setUserToken={setUserToken} />} />
           <Route path="/login" element={<Login setUserToken={setUserToken} userData={userData}/>} />
-          <Route path="/activities" element={<Activities setAllActivities={setAllActivities} />} />
+          <Route path="/activities" element={<Activities setAllActivities={setAllActivities} allActivities={allActivities}/>} />
           <Route
             path="/myRoutines"
             element={<MyRoutines setEditRoutine={setEditRoutine} setAllRoutines={setAllRoutines} userToken={userToken} userData={userData} />}

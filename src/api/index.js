@@ -100,6 +100,32 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
   }
 }
 
+
+// FUNCTION TO ADD AN ACTIVITY TO A ROUTINE
+
+export async function addActivity(activityId, count, duration) {
+
+try {
+  const options = {
+    method: "POST",
+    body: JSON.stringify({
+    activityId,
+    count,
+    duration
+  })}
+
+  const response = await fetch(`${BASE_URL}/routines/${routineId}`, options)
+  const result = await response.json()
+  return result
+
+  
+} catch (error) {
+  console.log(error, "THERE WAS AN ERROR ADDING ACTIVITY TO ROUTINE")
+  
+}
+
+}
+
 // FUNCTION FOR EDITING ROUTINE
 
 export async function editMyRoutine(userToken, name, goal, isPublic, routineId){
@@ -128,7 +154,7 @@ export async function editMyRoutine(userToken, name, goal, isPublic, routineId){
 }
 
 
-// FUNCTION FOR DELETING ROUTINE ////////////////////////
+// FUNCTION FOR DELETING ROUTINE 
 
 export async function deleteRoutine(localToken, routineId) {
   try {
