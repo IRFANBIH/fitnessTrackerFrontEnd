@@ -1,9 +1,10 @@
 import React from "react"
 import { SingleRoutine } from "./"
 
-const Routines = ({allRoutines, userData, setEditRoutine}) => {
-
-
+const Routines = ({setEditRoutine, userData, allRoutines} ) => {
+// let setEditRoutine= props.setEditRoutine
+// let allRoutines= props.allRoutines
+// let userData = props.userData
 
   return (
     <div>
@@ -11,7 +12,7 @@ const Routines = ({allRoutines, userData, setEditRoutine}) => {
 
       <div id="post-display">
         {allRoutines.map((routine) => {
-          return <SingleRoutine setEditRoutine={props.setEditRoutine} userData={userData} key={`routine-id${routine.id}`} routine={routine}  />
+          return <SingleRoutine setEditRoutine={setEditRoutine} userData={userData} key={`routine-id${routine.id}`} routine={routine}  />
         })}
       </div>
     </div>
