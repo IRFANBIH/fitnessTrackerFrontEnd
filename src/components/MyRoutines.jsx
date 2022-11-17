@@ -27,6 +27,8 @@ const MyRoutines = ({userData, setEditRoutine}) => {
           <SingleRoutine setEditRoutine={setEditRoutine} userData={userData}
             key={`routine-id${routine.id}`}
             routine={routine}
+            userRoutines={userRoutines}
+            setUserRoutines= {setUserRoutines} 
           />
         )
       }): <h2> Loading... </h2>}

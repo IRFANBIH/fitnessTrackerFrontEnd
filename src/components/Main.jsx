@@ -53,7 +53,7 @@ const Main = () => {
           <Route path="/activities" element={<Activities setAllActivities={setAllActivities} />} />
           <Route
             path="/myRoutines"
-            element={<MyRoutines setEditRoutine={setEditRoutine} userToken={userToken} userData={userData} />}
+            element={<MyRoutines setEditRoutine={setEditRoutine} setAllRoutines={setAllRoutines} userToken={userToken} userData={userData} />}
           />
           <Route path="/createRoutine" element={<CreateRoutine userToken={userToken} />} />
           <Route path="/routines/:routineId" element={<EditRoutine editRoutine={editRoutine} userToken={userToken} />} />
