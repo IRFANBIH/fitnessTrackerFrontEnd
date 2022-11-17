@@ -6,6 +6,7 @@ const Activities = ({}) => {
     async function getActivities(){
         const publicActivities = await getAllActivities()
         setAllActivities(publicActivities)
+// 
     }
 
     getActivities()
@@ -18,8 +19,6 @@ const Activities = ({}) => {
             <ul>
               <li><b>Activity:</b> {activity.name}</li>
               <li><b>Description:</b> {activity.description}</li>
-              <li><b>Duration:</b> {activity.duration}</li>
-              <li><b>Count:</b> {activity.count}</li>
             </ul>
           </div>
         )

@@ -2,12 +2,14 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { NewRoutine } from "../api"
 
-const CreateRoutine = ({ userToken }) => {
+const CreateRoutine = ({ userToken, allActivities }) => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: "",
     goal: "",
-    isPublic: undefined
+    isPublic: undefined,
+    count: "",
+    duration: ""
   })
 
   async function makeRoutine(event) {
@@ -15,13 +17,12 @@ const CreateRoutine = ({ userToken }) => {
     const name = formData.name
     const goal = formData.goal
     const isPublic = formData.isPublic
-    navigate('/MyRoutines')
-
+    navigate("/MyRoutines")
 
     const createdRoutine = await NewRoutine(userToken, name, goal, isPublic)
 
-    if(!userToken) {
-        alert(createdRoutine.message)
+    if (!userToken) {
+      alert(createdRoutine.message)
     }
   }
 
@@ -64,6 +65,37 @@ const CreateRoutine = ({ userToken }) => {
             type="radio"
             name="private-routine"
           />
+          <h2>Add Activity To Routine</h2>
+          {allActivities.map((activity) => {
+            return (
+              <>
+                <label htmlFor="activity-select">Choose an Activity:</label>
+                <select name="activity" id="activity-select">
+                  <option value="">--Please choose an activity--</option>
+                  <option>dog</option>
+                  <option value="activity-name">${activity.name}</option>
+                </select>
+              </>
+            )
+          })}
+          <label htmlFor="count">
+            Count
+            <input
+              onChange={(e) => setFormData({ ...formData, count: e.target.value })}
+              value={formData.count}
+              type="text"
+              name="count"
+            />
+          </label>
+          <label htmlFor="duration">
+            Duration
+            <input
+              onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+              value={formData.duration}
+              type="text"
+              name="duration"
+            />
+          </label>
         </label>
         <input type="submit" value="Create Routine" />
       </form>

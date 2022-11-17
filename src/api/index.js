@@ -24,6 +24,7 @@ export async function getAllActivities() {
     }
     const response = await fetch(`${BASE_URL}/activities`, options)
     const activities = await response.json()
+
     return activities
   } catch (error) {
     console.log(error, "AN ERROR OCCURRED WHILE GETTING ALL PUBLIC ACTIVITIES")
@@ -103,17 +104,19 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
 
 export async function editMyRoutine(userToken, name, goal, isPublic, routineId){
   try {
-    let options = {}
-    if (userToken) {
-      options = {
+      const options = {
         method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`
+        },
         body: JSON.stringify({
           name,
           goal,
           isPublic
         })
       }
-    }
+    
 
     const response = await fetch(`${BASE_URL}/routines/${routineId}`, options)
     const result = await response.json()

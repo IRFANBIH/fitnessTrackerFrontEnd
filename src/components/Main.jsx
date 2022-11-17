@@ -55,8 +55,8 @@ const Main = () => {
             path="/myRoutines"
             element={<MyRoutines setEditRoutine={setEditRoutine} setAllRoutines={setAllRoutines} userToken={userToken} userData={userData} />}
           />
-          <Route path="/createRoutine" element={<CreateRoutine userToken={userToken} />} />
-          <Route path="/routines/:routineId" element={<EditRoutine editRoutine={editRoutine} userToken={userToken} />} />
+          <Route path="/createRoutine" element={<CreateRoutine allActivities={allActivities} userToken={userToken} />} />
+          <Route path="/routines/:routineId" element={<EditRoutine userData={userData} editRoutine={editRoutine} userToken={userToken} />} />
         </Routes>
       </div>
     </BrowserRouter>
