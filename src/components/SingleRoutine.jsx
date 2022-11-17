@@ -19,7 +19,10 @@ const SingleRoutine = ({routine, userData, setEditRoutine }) => {
 
         {userData.id === routine.creatorId ?  
         <>
-        <NavLink to={`/routines/${routine.id}`}> <button onClick={setEditRoutine(routine)}>Edit Routine</button></NavLink><button> Delete Routine </button></> : null} 
+        <NavLink to={`/routines/${routine.id}`}> 
+        <button onClick={() => {setEditRoutine(routine)}}>Edit Routine</button>
+        </NavLink>
+        <button> Delete Routine </button></> : null} 
         
        
         

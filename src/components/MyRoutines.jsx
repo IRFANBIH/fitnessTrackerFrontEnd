@@ -6,7 +6,7 @@ const MyRoutines = ({ userToken, userData, setEditRoutine}) => {
   const [userRoutines, setUserRoutines] = useState([])
   const username = userData.username
   const id = userData.id
-  
+
   
     useEffect(() => {
       const localToken = localStorage.getItem("token")
@@ -17,19 +17,20 @@ const MyRoutines = ({ userToken, userData, setEditRoutine}) => {
       setUserRoutines(routines)}
     }
      allMyRoutines()
-  }, [userToken]);
+  }, [username] );
+  console.log(userRoutines, "should be userRoutines")
 
   return (
     <div>
       <h1>My Routines</h1>
-      {userRoutines.map((routine) => {
+      {userRoutines ? userRoutines.map((routine) => {
         return (
           <SingleRoutine setEditRoutine={setEditRoutine} userData={userData}
             key={`routine-id${routine.id}`}
             routine={routine}
           />
         )
-      })}
+      }): <h2> Loading... </h2>}
     </div>
   )
 }
