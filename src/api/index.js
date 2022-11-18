@@ -103,9 +103,8 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
 //CREATING AN ACTIVITY
 export async function NewActivity(userToken, name, description) {
   try {
-    let options = {}
-    if (userToken) {
-      options = {
+    
+      const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,10 +114,10 @@ export async function NewActivity(userToken, name, description) {
           name,
           description,
         })
-      }
+      
     }
 
-    const response = await fetch(`${BASE_URL}/activities`, options)
+    const response = await fetch(`${BASE_URL}/activities` , options)
     const result = await response.json()
     return result
   } catch (error) {

@@ -15,14 +15,15 @@ const CreateActivity = ({userToken}) => {
     async function makeActivity(event) {
       event.preventDefault()
       const name = formData.name
-      const description = formData.goal
+      const description = formData.description
       navigate("/activities")
   
       const createdActivity = await NewActivity(userToken, name, description)
+      console.log(createdActivity, "tjissssss")
   
-      if (!userToken) {
-        alert(createdActivity.message)
-      }
+    //   if (!userToken) {
+    //     alert(createdActivity.message)
+    //   }
     }
   
     return (
