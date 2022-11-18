@@ -10,6 +10,7 @@ const EditActivity = ({allActivities, userData, userToken})=>{
         duration: "",
         activityId: ""
       })
+      console.log(routineActivityId, "this is acrivity id")
 
       async function handleEditActivity(event) {
         event.preventDefault()

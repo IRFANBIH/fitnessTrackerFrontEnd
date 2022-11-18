@@ -1,11 +1,20 @@
 import React from "react"
 import { NavLink, useParams } from "react-router-dom"
-import { deleteRoutine, editActivity } from "../api"
+import { deleteRoutine, editActivity, deleteActivity } from "../api"
 
 const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUserRoutines }) => {
   const routineId = routine.id
   const localToken = localStorage.getItem("token")
   const {routineActivityId} = useParams()
+  const activities = userRoutines.map((routine)=> routine.activities)
+    if (activities) {
+      const activityId = activities.map((activity)=> activity.routineActivityId )
+      console.log(activityId, "waht sthis")
+   
+    }
+
+ 
+
 
   async function handleDelete() {
     const deleted = await deleteRoutine(localToken, routineId)
@@ -18,6 +27,22 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
       })
       setUserRoutines(updatedArray)
     }
+  }
+
+  async function handleDeleteActivity(routineActivityId) {
+    const localToken = localStorage.getItem("token")
+    console.log(routineActivityId," hello")
+    const deleted = await deleteActivity(localToken, routineActivityId)
+    console.log(deleted)
+    // if (deleted.success) {
+    //   const updatedArray = userRoutines.filter((routine) => {
+    //     if (routine.id == deleted.id) {
+    //       return false
+    //     }
+    //     return true
+    //   })
+    //   setUserRoutines(updatedArray)
+    // }
   }
 
   return (
@@ -56,6 +81,7 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
           <b>Activities</b>
         </p>
         {routine.activities.map((activity) => {
+          console.log(activity, "this is what")
           return (
             <div className="activity-list" key={`activity-id${activity.id}`}>
               <ul>
@@ -82,7 +108,11 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
                 Edit Activity
               </button>
             </NavLink>
-            <button onClick={handleDelete}> Delete Activity </button>
+            <button onClick={()=>{
+              handleDeleteActivity(activity.routineActivityId)
+
+
+            }}> Delete Activity </button>
           </>
    
             </div>

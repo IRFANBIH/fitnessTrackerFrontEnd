@@ -193,6 +193,26 @@ export async function deleteRoutine(localToken, routineId) {
   }
 }
 
+// FUNCTION FOR DELETING ACTIVITY
+export async function deleteActivity(localToken, routineActivityId) {
+  try {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localToken}`
+      }
+    }
+    const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, options)
+    const result = await response.json()
+    console.log(result)
+    return result
+  } catch (error) {
+    throw error
+  }
+}
+
+
 // FUNCTION FOR RETRIEVING ROUTINES BY A PARTICULAR USER * ALSO RETURNS CURRENT LOGGED-IN USER'S PUBLIC AND PRIVATE ROUTINES TO THEIR MY ROUTINES PAGE
 
 export async function getUserRoutines(username, userToken) {
