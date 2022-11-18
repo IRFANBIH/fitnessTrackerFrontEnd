@@ -10,12 +10,13 @@ const EditActivity = ({allActivities, userData, userToken})=>{
         duration: "",
         activityId: ""
       })
-      console.log(routineActivityId, "this is acrivity id")
+      console.log(routineActivityId, "this is activity id")
 
       async function handleEditActivity(event) {
         event.preventDefault()
         const count = formData.count
         const duration = formData.duration
+
 
         navigate('/MyRoutines')
     

@@ -6,12 +6,12 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
   const routineId = routine.id
   const localToken = localStorage.getItem("token")
   const {routineActivityId} = useParams()
-  const activities = userRoutines.map((routine)=> routine.activities)
-    if (activities) {
-      const activityId = activities.map((activity)=> activity.routineActivityId )
-      console.log(activityId, "waht sthis")
+  // const activities = userRoutines.map((routine)=> routine.activities)
+  //   if (activities) {
+  //     const activityId = activities.map((activity)=> activity.routineActivityId )
+  //     console.log(activityId, "waht sthis")
    
-    }
+  //   }
 
  
 

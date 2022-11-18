@@ -100,6 +100,32 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
   }
 }
 
+//CREATING AN ACTIVITY
+export async function NewActivity(userToken, name, description) {
+  try {
+    let options = {}
+    if (userToken) {
+      options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify({
+          name,
+          description,
+        })
+      }
+    }
+
+    const response = await fetch(`${BASE_URL}/activities`, options)
+    const result = await response.json()
+    return result
+  } catch (error) {
+    console.log(error, "THERE WAS AN ERROR CREATING ACTIVITY")
+  }
+}
+
 // FUNCTION TO ADD AN ACTIVITY TO A ROUTINE
 
 export async function addActivity(activityId, count, duration, routineId) {
