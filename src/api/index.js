@@ -103,27 +103,28 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
 
 // FUNCTION TO ADD AN ACTIVITY TO A ROUTINE
 
-export async function addActivity(activityId, count, duration) {
+export async function addActivity(name, activityId, count, duration, routineId) {
 
 try {
   const options = {
     method: "POST",
     body: JSON.stringify({
-    activityId,
-    count,
-    duration
-  })}
-
-  const response = await fetch(`${BASE_URL}/routines/${routineId}`, options)
-  const result = await response.json()
+      name: name,
+      activityId: activityId,
+      count: count,
+      duration: duration
+    }
+      
+    )
+  }
+  const response = await fetch(`${BASE_URL}/routines/${routineId}/activities`, options)
+  const result = response.json()
   return result
-
   
 } catch (error) {
   console.log(error, "THERE WAS AN ERROR ADDING ACTIVITY TO ROUTINE")
   
 }
-
 }
 
 // FUNCTION FOR EDITING ROUTINE
@@ -172,6 +173,7 @@ export async function deleteRoutine(localToken, routineId) {
   } catch (error) {
     throw error;
   }
+  
 
 
 }

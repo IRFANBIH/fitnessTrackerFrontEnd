@@ -40,6 +40,13 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
               </button>
             </NavLink>
 
+            <NavLink to={`/routines/${routine.id}/activities`}>
+              <button
+                >
+                Add Activities To Routine
+              </button>
+            </NavLink>
+
             <button onClick={handleDelete}> Delete Routine </button>
           </>
         ) : null}

@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react"
-import { getAllActivities } from "../api"
+import React from "react"
+
 
 const Activities = ({allActivities}) => {
-//   const [allActivities, setAllActivities] = useState([])
 
-//   useEffect(() => {
-//   async function getActivities() {
-//     const publicActivities = await getAllActivities()
-//     setAllActivities(publicActivities)  
-//   }
-//   getActivities()
-// },[])
 
 
 

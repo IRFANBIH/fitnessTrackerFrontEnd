@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { editMyRoutine} from "../api"
+import AddRoutineActivity from "./AddRoutineActivity"
 
 
 
@@ -22,7 +23,7 @@ const navigate = useNavigate()
 
 
     const updatedRoutine = await editMyRoutine(userToken, name, goal, isPublic, routineId)
-    console.log(updatedRoutine, "is this a routine object with a creator Id?")
+
 
     if(!userToken) {
         alert(updatedRoutine.message)
@@ -73,6 +74,7 @@ const navigate = useNavigate()
         <input type="submit" value="Update Routine" />
       </form>
     </div>
+    
   )
 
     
