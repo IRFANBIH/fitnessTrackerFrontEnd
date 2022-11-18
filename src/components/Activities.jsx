@@ -1,7 +1,9 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 
 
 const Activities = ({allActivities}) => {
+  const navigate = useNavigate()
 
 
 
@@ -9,7 +11,7 @@ const Activities = ({allActivities}) => {
   return (
     <div>
       <h1>Available Activities To Add To Your Routines</h1>
-      <h3>If you don't see one that meets your needs, create your own!</h3><button>Create Activity</button>
+      <h3>If you don't see one that meets your needs, create your own!</h3><button onClick={()=>navigate('/CreateActivity')}>Create Activity</button>
       {allActivities.map((activity) => {
         return (
           <div className="activity-list" key={`activity-id${activity.id}`}>
