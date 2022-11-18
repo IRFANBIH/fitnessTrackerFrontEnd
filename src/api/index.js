@@ -100,82 +100,73 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
   }
 }
 
-
 // FUNCTION TO ADD AN ACTIVITY TO A ROUTINE
 
-export async function addActivity(name, activityId, count, duration, routineId) {
+export async function addActivity(activityId, count, duration, routineId) {
+  try {
 
-try {
-  const options = {
-    method: "POST",
-    body: JSON.stringify({
-      name: name,
-      activityId: activityId,
-      count: count,
-      duration: duration
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        activityId: activityId,
+        count: count,
+        duration: duration
+      })
     }
-      
-    )
+    const response = await fetch(`${BASE_URL}/routines/${routineId}/activities`, options)
+    const result = response.json()
+    return result
+  } catch (error) {
+    console.log(error, "THERE WAS AN ERROR ADDING ACTIVITY TO ROUTINE")
   }
-  const response = await fetch(`${BASE_URL}/routines/${routineId}/activities`, options)
-  const result = response.json()
-  return result
-  
-} catch (error) {
-  console.log(error, "THERE WAS AN ERROR ADDING ACTIVITY TO ROUTINE")
-  
-}
 }
 
 // FUNCTION FOR EDITING ROUTINE
 
-export async function editMyRoutine(userToken, name, goal, isPublic, routineId){
+export async function editMyRoutine(userToken, name, goal, isPublic, routineId) {
   try {
-      const options = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken}`
-        },
-        body: JSON.stringify({
-          name,
-          goal,
-          isPublic
-        })
-      }
-    
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`
+      },
+      body: JSON.stringify({
+        name,
+        goal,
+        isPublic
+      })
+    }
 
     const response = await fetch(`${BASE_URL}/routines/${routineId}`, options)
     const result = await response.json()
     return result
-    
   } catch (error) {
     throw error
   }
 }
 
-
-// FUNCTION FOR DELETING ROUTINE 
+// FUNCTION FOR DELETING ROUTINE
 
 export async function deleteRoutine(localToken, routineId) {
   try {
     const options = {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localToken}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localToken}`
       }
     }
-    const response = await fetch (`${BASE_URL}/routines/${routineId}`, options)
+    const response = await fetch(`${BASE_URL}/routines/${routineId}`, options)
     const result = await response.json()
-    return result;
-    
+    return result
   } catch (error) {
-    throw error;
+    throw error
   }
-  
-
-
 }
 
 // FUNCTION FOR RETRIEVING ROUTINES BY A PARTICULAR USER * ALSO RETURNS CURRENT LOGGED-IN USER'S PUBLIC AND PRIVATE ROUTINES TO THEIR MY ROUTINES PAGE

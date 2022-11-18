@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import { addActivity } from "../api"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const AddRoutineActivity = ({ allActivities}) => {
+  const navigate = useNavigate()
 
   let { routineId } = useParams()
 
@@ -12,15 +13,17 @@ const AddRoutineActivity = ({ allActivities}) => {
     activityId: ""
   })
 
-  const count = formData.count
-  const duration = formData.duration
-  const activityId = formData.activityId
+  const count = Number(formData.count)
+  const duration = Number(formData.duration)
+  const activityId = Number(formData.activityId)
 
 
   async function handleAddActivity(event) {
     event.preventDefault()
+  
 
     await addActivity(activityId, count, duration, routineId)
+    navigate('/MyRoutines')
   }
 
   return (
