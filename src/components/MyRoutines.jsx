@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react"
+import { NavLink, useNavigate} from "react-router-dom"
 import { getUserRoutines } from "../api"
 import {SingleRoutine} from './'
 
 const MyRoutines = ({userData, setEditRoutine}) => {
+  const navigate = useNavigate()
   const [userRoutines, setUserRoutines] = useState([])
   const username = userData.username
   const id = userData.id
@@ -22,6 +24,8 @@ const MyRoutines = ({userData, setEditRoutine}) => {
   return (
     <div>
       <h1>My Routines</h1>
+      <h2>Stuck in a routine rut?  Create something new!</h2>
+        <button onClick={()=>navigate('/CreateRoutine')}>Create New Routine</button>
       {userRoutines ? userRoutines.map((routine) => {
         return (
           <SingleRoutine setEditRoutine={setEditRoutine} userData={userData}

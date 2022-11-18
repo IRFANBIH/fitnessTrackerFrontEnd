@@ -18,7 +18,7 @@ const Navbar = ({userToken, setUserToken}) => {
             }}> Log out </button>
             <NavLink to="/" className="routes">Home </NavLink>
             <NavLink to="MyRoutines" className="routes">My Routines </NavLink>
-            <NavLink to="CreateRoutine" className="routes"> Create a Routine </NavLink>
+            {/* <NavLink to="CreateRoutine" className="routes"> Create a Routine </NavLink> */}
             <NavLink to="activities" className="routes">Activities </NavLink>
           <NavLink to="routines" className="routes"> Routines  </NavLink>
           </div>):
