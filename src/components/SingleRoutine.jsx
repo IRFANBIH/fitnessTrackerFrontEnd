@@ -1,10 +1,11 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
-import { deleteRoutine } from "../api"
+import { NavLink, useParams } from "react-router-dom"
+import { deleteRoutine, editActivity } from "../api"
 
 const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUserRoutines }) => {
   const routineId = routine.id
   const localToken = localStorage.getItem("token")
+  const {routineActivityId} = useParams()
 
   async function handleDelete() {
     const deleted = await deleteRoutine(localToken, routineId)
@@ -71,6 +72,19 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
                   <b>Count:</b> {activity.count}
                 </li>
               </ul>
+
+          <>
+            <NavLink to={`/routine_activities/${routineActivityId}`}>
+              <button
+                onClick={() => {
+                  // setEditActivity(activity)
+                }}>
+                Edit Activity
+              </button>
+            </NavLink>
+            <button onClick={handleDelete}> Delete Activity </button>
+          </>
+   
             </div>
           )
         })}

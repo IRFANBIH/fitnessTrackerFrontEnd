@@ -150,6 +150,30 @@ export async function editMyRoutine(userToken, name, goal, isPublic, routineId) 
   }
 }
 
+// FUNCTION FOR EDITING ACTIVITY
+export async function editMyActivity(count, duration) {
+  try {
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`
+      },
+      body: JSON.stringify({
+        count,
+        duration
+      })
+    }
+
+    const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, options)
+    const result = await response.json()
+    return result
+  } catch (error) {
+    throw error
+  }
+}
+
+
 // FUNCTION FOR DELETING ROUTINE
 
 export async function deleteRoutine(localToken, routineId) {

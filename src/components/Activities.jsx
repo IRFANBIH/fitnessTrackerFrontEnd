@@ -22,6 +22,7 @@ const Activities = ({allActivities}) => {
               </li>
             </ul>
           </div>
+          
         )
       })}
     </div>

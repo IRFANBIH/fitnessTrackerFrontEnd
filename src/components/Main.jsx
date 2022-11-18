@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Navbar, Routines, Activities, MyRoutines, Register, Login, CreateRoutine, Home, EditRoutine, AddRoutineActivity  } from "./"
+import { Navbar, Routines, Activities, MyRoutines, Register, Login, CreateRoutine, Home, EditRoutine, AddRoutineActivity, EditActivity } from "./"
 import { getAllPublicRoutines, getUserData, getAllActivities, getUserRoutines} from "../api"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
@@ -70,6 +70,7 @@ const Main = () => {
           <Route path="/createRoutine" element={<CreateRoutine allActivities={allActivities} userToken={userToken} />} />
           <Route path="/routines/:routineId/activities" element={<AddRoutineActivity  userToken={userToken} allActivities={allActivities}/>}/>
           <Route path="/routines/:routineId" element={<EditRoutine userData={userData} editRoutine={editRoutine} userToken={userToken} />} />
+          <Route path="/routine_activities/:routineActivityId" element={<EditActivity userData={userData} editRoutine={editRoutine} userToken={userToken} allActivities={allActivities}/>} />
         </Routes>
       </div>
     </BrowserRouter>
