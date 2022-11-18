@@ -74,7 +74,7 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
               </ul>
 
           <>
-            <NavLink to={`/routine_activities/${routineActivityId}`}>
+            <NavLink to={`/routine_activities/${activity.routineActivityId}`}>
               <button
                 onClick={() => {
                   // setEditActivity(activity)

@@ -151,7 +151,7 @@ export async function editMyRoutine(userToken, name, goal, isPublic, routineId) 
 }
 
 // FUNCTION FOR EDITING ACTIVITY
-export async function editMyActivity(count, duration, userToken, routineActivityId) {
+export async function editMyActivity(userToken, count, duration, routineActivityId) {
   try {
     const options = {
       method: "PATCH",
