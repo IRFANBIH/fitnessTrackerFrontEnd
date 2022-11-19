@@ -21,7 +21,7 @@ const CreateRoutine = ({ userToken}) => {
 
     const createdRoutine = await NewRoutine(userToken, name, goal, isPublic)
 
-    if (!userToken) {
+    if (Error) {
       alert(createdRoutine.message)
     }
   }

@@ -1,20 +1,15 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { NavLink, useParams } from "react-router-dom"
-import { deleteRoutine, editActivity, deleteActivity } from "../api"
+import { deleteRoutine, deleteActivity } from "../api"
 
 const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUserRoutines }) => {
+  const [userActivities, setUserActivities] = useState([])
+  console.log(userActivities, "line 7")
   const routineId = routine.id
   const localToken = localStorage.getItem("token")
-  const {routineActivityId} = useParams()
-  // const activities = userRoutines.map((routine)=> routine.activities)
-  //   if (activities) {
-  //     const activityId = activities.map((activity)=> activity.routineActivityId )
-  //     console.log(activityId, "waht sthis")
-   
-  //   }
-
- 
-
+  const { routineActivityId } = useParams()
+  const activities = routine.activities
+  console.log(activities, "line 11")
 
   async function handleDelete() {
     const deleted = await deleteRoutine(localToken, routineId)
@@ -31,18 +26,18 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
 
   async function handleDeleteActivity(routineActivityId) {
     const localToken = localStorage.getItem("token")
-    console.log(routineActivityId," hello")
     const deleted = await deleteActivity(localToken, routineActivityId)
-    console.log(deleted)
-    // if (deleted.success) {
-    //   const updatedArray = userRoutines.filter((routine) => {
-    //     if (routine.id == deleted.id) {
-    //       return false
-    //     }
-    //     return true
-    //   })
-    //   setUserRoutines(updatedArray)
-    // }
+
+    if (deleted.success) {
+      const updatedArray = activities.filter((activity) => {
+        if (activity.id == deleted.activityId) {
+          return false
+        }
+        return true
+      })
+
+      setUserActivities(updatedArray)
+    }
   }
 
   return (
@@ -67,10 +62,7 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
             </NavLink>
 
             <NavLink to={`/routines/${routine.id}/activities`}>
-              <button
-                >
-                Add Activities To Routine
-              </button>
+              <button>Add Activities To Routine</button>
             </NavLink>
 
             <button onClick={handleDelete}> Delete Routine </button>
@@ -98,22 +90,26 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
                 </li>
               </ul>
 
-          <>
-            <NavLink to={`/routine_activities/${activity.routineActivityId}`}>
-              <button
-                onClick={() => {
-                  // setEditActivity(activity)
-                }}>
-                Edit Activity
-              </button>
-            </NavLink>
-            <button onClick={()=>{
-              handleDeleteActivity(activity.routineActivityId)
-
-
-            }}> Delete Activity </button>
-          </>
-   
+              <>
+                {userData.id === routine.creatorId ? (
+                  <>
+                    <NavLink to={`/routine_activities/${activity.routineActivityId}`}>
+                      <button
+                        onClick={() => {
+                          // setEditActivity(activity)
+                        }}>
+                        Edit Activity
+                      </button>
+                    </NavLink>
+                    <button
+                      onClick={() => {
+                        handleDeleteActivity(activity.routineActivityId)
+                      }}>
+                      Delete Activity
+                    </button>
+                  </>
+                ) : null}
+              </>
             </div>
           )
         })}

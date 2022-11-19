@@ -14,7 +14,7 @@ const Routines = ({
 
   return (
     <div>
-      <h1> Here are some free Routines!</h1>
+      <h1> Here Are Some Routines To Get You Started!</h1>
 
       <div id="post-display">
         {allRoutines.map((routine) => {

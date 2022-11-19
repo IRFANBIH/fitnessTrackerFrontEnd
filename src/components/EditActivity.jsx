@@ -22,9 +22,9 @@ const EditActivity = ({ allActivities, userData, userToken }) => {
   }
 
   return (
-    <div id="edit-activity">
-      <form>
-        <h2>EDIT YOUR ACTIVITIES TO YOUR ROUTINE</h2>
+    <div className="activity">
+      <form className="activity-form">
+        <h2>EDIT ACTIVITY</h2>
 
         <label htmlFor="count">
           Count

@@ -34,7 +34,6 @@ const AddRoutineActivity = ({ allActivities}) => {
         <select
           onChange={(e) => {
             setFormData({ ...formData, activityId: e.target.value })
-            console.log(e.target.value)
           }}
           name="activity"
           id="activity-select">
@@ -49,7 +48,7 @@ const AddRoutineActivity = ({ allActivities}) => {
           <input
             onChange={(e) => {
               setFormData({ ...formData, count: e.target.value })
-              console.log(e.target.value)}}
+            }}
             value={formData.count}
             type="text"
             name="count"

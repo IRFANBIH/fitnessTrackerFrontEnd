@@ -22,10 +22,11 @@ const MyRoutines = ({userData, setEditRoutine}) => {
   }, [username] );
 
   return (
-    <div>
+    <div id="my-routines">
       <h1>My Routines</h1>
       <h2>Stuck in a routine rut?  Create something new!</h2>
-        <button onClick={()=>navigate('/CreateRoutine')}>Create New Routine</button>
+        <button id="routine-button"onClick={()=>navigate('/CreateRoutine')}>Create New Routine</button>
+        <div>
       {userRoutines ? userRoutines.map((routine) => {
         return (
           <SingleRoutine setEditRoutine={setEditRoutine} userData={userData}
@@ -37,6 +38,7 @@ const MyRoutines = ({userData, setEditRoutine}) => {
           />
         )
       }): <h2> Loading... </h2>}
+      </div>
     </div>
   )
 }

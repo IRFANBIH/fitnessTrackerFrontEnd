@@ -19,7 +19,6 @@ const CreateActivity = ({userToken}) => {
       navigate("/activities")
   
       const createdActivity = await NewActivity(userToken, name, description)
-      console.log(createdActivity, "tjissssss")
   
       if (Error) {
         alert(createdActivity.message)
