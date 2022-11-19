@@ -13,7 +13,7 @@ import {
   EditActivity,
   CreateActivity
 } from "./"
-import { getAllPublicRoutines, getUserData, getAllActivities, getUserRoutines } from "../api"
+import { getAllPublicRoutines, getUserData, getAllActivities } from "../api"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 const Main = () => {

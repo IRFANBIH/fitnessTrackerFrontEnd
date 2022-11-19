@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { addActivity } from "../api"
 import { useNavigate, useParams } from "react-router-dom"
 
-const AddRoutineActivity = ({ allActivities}) => {
+const AddRoutineActivity = ({ allActivities }) => {
   const navigate = useNavigate()
 
   let { routineId } = useParams()
@@ -17,13 +17,11 @@ const AddRoutineActivity = ({ allActivities}) => {
   const duration = Number(formData.duration)
   const activityId = Number(formData.activityId)
 
-
   async function handleAddActivity(event) {
     event.preventDefault()
-  
 
     await addActivity(activityId, count, duration, routineId)
-    navigate('/MyRoutines')
+    navigate("/MyRoutines")
   }
 
   return (
@@ -64,7 +62,6 @@ const AddRoutineActivity = ({ allActivities}) => {
           />
         </label>
         <button onClick={handleAddActivity}>Add Activity To Routine</button>
-
       </form>
     </div>
   )

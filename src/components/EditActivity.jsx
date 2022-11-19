@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { editMyActivity } from "../api"
 
-const EditActivity = ({ allActivities, userData, userToken }) => {
+const EditActivity = ({ userToken }) => {
   const navigate = useNavigate()
   const { routineActivityId } = useParams()
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const EditActivity = ({ allActivities, userData, userToken }) => {
 
     navigate("/MyRoutines")
 
-    const updatedActivity = await editMyActivity(userToken, count, duration, routineActivityId)
+    await editMyActivity(userToken, count, duration, routineActivityId)
   }
 
   return (
@@ -31,7 +31,6 @@ const EditActivity = ({ allActivities, userData, userToken }) => {
           <input
             onChange={(e) => {
               setFormData({ ...formData, count: e.target.value })
-              console.log(e.target.value)
             }}
             value={formData.count}
             type="text"

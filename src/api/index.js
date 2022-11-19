@@ -103,34 +103,28 @@ export async function NewRoutine(userToken, name, goal, isPublic) {
 //CREATING AN ACTIVITY
 export async function NewActivity(userToken, name, description) {
   try {
-    
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken}`
-        },
-        body: JSON.stringify({
-          name,
-          description,
-        })
-      
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`
+      },
+      body: JSON.stringify({
+        name,
+        description
+      })
     }
 
-    const response = await fetch(`${BASE_URL}/activities` , options)
+    const response = await fetch(`${BASE_URL}/activities`, options)
     const result = await response.json()
     return result
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 }
 
 // FUNCTION TO ADD AN ACTIVITY TO A ROUTINE
 
 export async function addActivity(activityId, count, duration, routineId) {
   try {
-
-
     const options = {
       method: "POST",
       headers: {
@@ -198,7 +192,6 @@ export async function editMyActivity(userToken, count, duration, routineActivity
   }
 }
 
-
 // FUNCTION FOR DELETING ROUTINE
 
 export async function deleteRoutine(localToken, routineId) {
@@ -236,7 +229,6 @@ export async function deleteActivity(localToken, routineActivityId) {
     throw error
   }
 }
-
 
 // FUNCTION FOR RETRIEVING ROUTINES BY A PARTICULAR USER * ALSO RETURNS CURRENT LOGGED-IN USER'S PUBLIC AND PRIVATE ROUTINES TO THEIR MY ROUTINES PAGE
 

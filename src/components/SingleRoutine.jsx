@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { NavLink, useParams } from "react-router-dom"
 import { deleteRoutine, deleteActivity } from "../api"
 
 const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUserRoutines }) => {
   const [userActivities, setUserActivities] = useState([])
-  console.log(userActivities, "line 7")
+
   const routineId = routine.id
   const localToken = localStorage.getItem("token")
   const { routineActivityId } = useParams()
   const activities = routine.activities
-  console.log(activities, "line 11")
 
   async function handleDelete() {
     const deleted = await deleteRoutine(localToken, routineId)
@@ -27,6 +26,8 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
   async function handleDeleteActivity(routineActivityId) {
     const localToken = localStorage.getItem("token")
     const deleted = await deleteActivity(localToken, routineActivityId)
+
+    // this if statement for updating state after activity is deleted isn't working * hard refresh for state to update still required.
 
     if (deleted.success) {
       const updatedArray = activities.filter((activity) => {
@@ -94,12 +95,7 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
                 {userData.id === routine.creatorId ? (
                   <>
                     <NavLink to={`/routine_activities/${activity.routineActivityId}`}>
-                      <button
-                        onClick={() => {
-                          // setEditActivity(activity)
-                        }}>
-                        Edit Activity
-                      </button>
+                      <button onClick={() => {}}>Edit Activity</button>
                     </NavLink>
                     <button
                       onClick={() => {

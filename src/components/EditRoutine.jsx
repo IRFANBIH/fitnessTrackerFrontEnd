@@ -1,13 +1,10 @@
 import React, { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { editMyRoutine} from "../api"
-import AddRoutineActivity from "./AddRoutineActivity"
+import { editMyRoutine } from "../api"
 
-
-
-const EditRoutine = ({userToken, editRoutine, userData}) =>{
-    let {routineId} = useParams()
-const navigate = useNavigate()
+const EditRoutine = ({ userToken, editRoutine, userData }) => {
+  let { routineId } = useParams()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: editRoutine.name,
     goal: editRoutine.goal,
@@ -19,16 +16,14 @@ const navigate = useNavigate()
     const name = formData.name
     const goal = formData.goal
     const isPublic = formData.isPublic
-    navigate('/MyRoutines')
-
+    navigate("/MyRoutines")
 
     const updatedRoutine = await editMyRoutine(userToken, name, goal, isPublic, routineId)
 
-
-    if(!userToken) {
-        alert(updatedRoutine.message)
+    if (Error) {
+      alert(updatedRoutine.message)
     }
-    if(userData.id === updatedRoutine.creatorId);
+    if (userData.id === updatedRoutine.creatorId);
   }
 
   return (
@@ -74,15 +69,7 @@ const navigate = useNavigate()
         <input type="submit" value="Update Routine" />
       </form>
     </div>
-    
   )
-
-    
-
-
-
 }
 
-
-
-export default EditRoutine;
+export default EditRoutine

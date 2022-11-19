@@ -1,15 +1,14 @@
 import React, { useState } from "react"
-import { NavLink, useNavigate} from "react-router-dom"
-import {  NewRoutine } from "../api"
+import { NavLink, useNavigate } from "react-router-dom"
+import { NewRoutine } from "../api"
 
-const CreateRoutine = ({ userToken}) => {
+const CreateRoutine = ({ userToken }) => {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     name: "",
     goal: "",
     isPublic: ""
-
   })
 
   async function makeRoutine(event) {
@@ -30,7 +29,7 @@ const CreateRoutine = ({ userToken}) => {
     <div>
       <div id="create-routine" onSubmit={makeRoutine}>
         <h1> CREATE A ROUTINE</h1>
-        
+
         <form>
           <label htmlFor="name">
             Routine Name
