@@ -81,7 +81,6 @@ const SingleRoutine = ({ routine, userData, setEditRoutine, userRoutines, setUse
           <b>Activities</b>
         </p>
         {routine.activities.map((activity) => {
-          console.log(activity, "this is what")
           return (
             <div className="activity-list" key={`activity-id${activity.id}`}>
               <ul>

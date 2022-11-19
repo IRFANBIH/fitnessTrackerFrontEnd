@@ -21,9 +21,9 @@ const CreateActivity = ({userToken}) => {
       const createdActivity = await NewActivity(userToken, name, description)
       console.log(createdActivity, "tjissssss")
   
-    //   if (!userToken) {
-    //     alert(createdActivity.message)
-    //   }
+      if (Error) {
+        alert(createdActivity.message)
+      }
     }
   
     return (

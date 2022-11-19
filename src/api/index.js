@@ -121,7 +121,7 @@ export async function NewActivity(userToken, name, description) {
     const result = await response.json()
     return result
   } catch (error) {
-    console.log(error, "THERE WAS AN ERROR CREATING ACTIVITY")
+    
   }
 }
 
