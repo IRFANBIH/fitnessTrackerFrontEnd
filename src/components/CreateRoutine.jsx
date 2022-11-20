@@ -16,11 +16,13 @@ const CreateRoutine = ({ userToken }) => {
     const name = formData.name
     const goal = formData.goal
     const isPublic = formData.isPublic
-    navigate("/MyRoutines")
+    // navigate("/MyRoutines")
 
     const createdRoutine = await NewRoutine(userToken, name, goal, isPublic)
 
-    if (Error) {
+    if (!createdRoutine.error) {
+      navigate("/MyRoutines");
+    } else {
       alert(createdRoutine.message)
     }
   }
